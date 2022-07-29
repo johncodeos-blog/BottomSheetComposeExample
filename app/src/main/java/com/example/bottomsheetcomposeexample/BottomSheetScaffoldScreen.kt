@@ -1,8 +1,6 @@
 package com.example.bottomsheetcomposeexample
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -35,8 +33,10 @@ fun BottomSheetScaffoldScreen() {
         Scaffold(
             topBar = { TopBar() },
             backgroundColor = colorResource(id = R.color.colorPrimaryDark)
-        ) {
-            BottomSheetScaffoldMainScreen(scope = scope, state = bottomSheetScaffoldState)
+        ) { padding ->  // We need to pass scaffold's inner padding to content. That's why we use Box.
+            Box(modifier = Modifier.padding(padding)) {
+                BottomSheetScaffoldMainScreen(scope = scope, state = bottomSheetScaffoldState)
+            }
         }
     }
 }
